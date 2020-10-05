@@ -45,11 +45,11 @@ pipeline {
     //    sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega8hva ..; make;"
     //  }
     //}
-    stage ("atmega8u2") {
-      steps {
-        sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega8u2 ..; make;"
-      }
-    }
+    //stage ("atmega8u2") {
+    //  steps {
+    //    sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega8u2 ..; make;"
+    //  }
+    //}
     stage ("atmega8515") {
       steps {
         sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega8515 ..; make;"
