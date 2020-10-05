@@ -54,3 +54,6 @@ dkms.conf
 # Clion specific
 /.idea*/
 /*build*/
+
+# other directories
+/*FreeRTOS-Kernel*/
