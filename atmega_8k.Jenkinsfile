@@ -26,43 +26,43 @@ pipeline {
       }
     }
     stage ("atmega8") {
-      catchError {
-        steps {
+      steps {
+        catchError {
           sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega8 ..; make;"
         }
       }
     }
     stage ("atmega8a") {
-      catchError {
-        steps {
+      steps {
+        catchError {
           sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega8a ..; make;"
         }
       }
     }
     stage ("atmega8hva") {
-      catchError {
-        steps {
+      steps {
+        catchError {
           sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega8hva ..; make;"
         }
       }
     }
     stage ("atmega8u2") {
-      catchError {
-        steps {
+      steps {
+        catchError {
           sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega8u2 ..; make;"
         }
       }
     }
     stage ("atmega8515") {
-      catchError {
-        steps {
+      steps {
+        catchError {
           sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega8515 ..; make;"
         }
       }
     }
     stage ("atmega8535") {
-      catchError {
-        steps {
+      steps {
+        catchError {
           sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega8535 ..; make;"
         }
       }
