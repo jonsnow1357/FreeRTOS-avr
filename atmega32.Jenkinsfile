@@ -27,17 +27,17 @@ pipeline {
     }
     stage ("atmega32") {
       steps {
-        sh "mkdir build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega32 ..; make;"
+        sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega32 ..; make;"
       }
     }
     stage ("atmega32a") {
       steps {
-        sh "mkdir build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega32a ..; make;"
+        sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega32a ..; make;"
       }
     }
     stage ("atmega323") {
       steps {
-        sh "mkdir build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega323 ..; make;"
+        sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega323 ..; make;"
       }
     }
   }
