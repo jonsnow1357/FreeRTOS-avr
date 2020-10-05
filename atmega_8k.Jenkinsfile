@@ -25,47 +25,47 @@ pipeline {
         ])
       }
     }
-    catchError {
-        stage ("atmega8") {
-          steps {
-            sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega8 ..; make;"
-          }
+    stage ("atmega8") {
+      catchError {
+        steps {
+          sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega8 ..; make;"
         }
+      }
     }
-    catchError {
-        stage ("atmega8a") {
-          steps {
-            sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega8a ..; make;"
-          }
+    stage ("atmega8a") {
+      catchError {
+        steps {
+          sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega8a ..; make;"
         }
+      }
     }
-    catchError {
-        stage ("atmega8hva") {
-          steps {
-            sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega8hva ..; make;"
-          }
+    stage ("atmega8hva") {
+      catchError {
+        steps {
+          sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega8hva ..; make;"
         }
+      }
     }
-    catchError {
-        stage ("atmega8u2") {
-          steps {
-            sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega8u2 ..; make;"
-          }
+    stage ("atmega8u2") {
+      catchError {
+        steps {
+          sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega8u2 ..; make;"
         }
+      }
     }
-    catchError {
-        stage ("atmega8515") {
-          steps {
-            sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega8515 ..; make;"
-          }
+    stage ("atmega8515") {
+      catchError {
+        steps {
+          sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega8515 ..; make;"
         }
+      }
     }
-    catchError {
-        stage ("atmega8535") {
-          steps {
-            sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega8535 ..; make;"
-          }
+    stage ("atmega8535") {
+      catchError {
+        steps {
+          sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega8535 ..; make;"
         }
+      }
     }
   }
 
