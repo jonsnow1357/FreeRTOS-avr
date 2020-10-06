@@ -27,42 +27,42 @@ pipeline {
     }
     stage ("atmega8") {
       steps {
-        catchError(buildResult: "SUCCESS", stageResult: "FAILURE") {
+        catchError(buildResult: "FAILURE", stageResult: "FAILURE") {
           sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega8 ..; make;"
         }
       }
     }
     stage ("atmega8a") {
       steps {
-        catchError(buildResult: "SUCCESS", stageResult: "FAILURE") {
+        catchError(buildResult: "FAILURE", stageResult: "FAILURE") {
           sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega8a ..; make;"
         }
       }
     }
     stage ("atmega8hva") {
       steps {
-        catchError(buildResult: "SUCCESS", stageResult: "FAILURE") {
+        catchError(buildResult: "FAILURE", stageResult: "FAILURE") {
           sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega8hva ..; make;"
         }
       }
     }
     stage ("atmega8u2") {
       steps {
-        catchError(buildResult: "SUCCESS", stageResult: "FAILURE") {
+        catchError(buildResult: "FAILURE", stageResult: "FAILURE") {
           sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega8u2 ..; make;"
         }
       }
     }
     stage ("atmega8515") {
       steps {
-        catchError(buildResult: "SUCCESS", stageResult: "FAILURE") {
+        catchError(buildResult: "FAILURE", stageResult: "FAILURE") {
           sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega8515 ..; make;"
         }
       }
     }
     stage ("atmega8535") {
       steps {
-        catchError(buildResult: "SUCCESS", stageResult: "FAILURE") {
+        catchError(buildResult: "FAILURE", stageResult: "FAILURE") {
           sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega8535 ..; make;"
         }
       }
