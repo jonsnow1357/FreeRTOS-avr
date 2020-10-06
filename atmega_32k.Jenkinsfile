@@ -27,17 +27,30 @@ pipeline {
     }
     stage ("atmega32") {
       steps {
-        sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega32 ..; make;"
+        catchError(buildResult: "FAILURE", stageResult: "FAILURE") {
+          sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega32 ..; make;"
+        }
       }
     }
     stage ("atmega32a") {
       steps {
-        sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega32a ..; make;"
+        catchError(buildResult: "FAILURE", stageResult: "FAILURE") {
+          sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega32a ..; make;"
+        }
+      }
+    }
+    stage ("atmega32u2") {
+      steps {
+        catchError(buildResult: "FAILURE", stageResult: "FAILURE") {
+          sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega32u2 ..; make;"
+        }
       }
     }
     stage ("atmega323") {
       steps {
-        sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega323 ..; make;"
+        catchError(buildResult: "FAILURE", stageResult: "FAILURE") {
+          sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega323 ..; make;"
+        }
       }
     }
   }
