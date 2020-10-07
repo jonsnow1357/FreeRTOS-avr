@@ -10,6 +10,10 @@ pipeline {
     pollSCM ("H/30 * * * *")
   }
 
+  parameters {
+    choice(name: "AVR_FR_OPT", choices: ["old", "new"], description: "FreeRTOS AVR port")
+  }
+
   stages {
     stage ("env") {
       steps {
@@ -28,28 +32,28 @@ pipeline {
     stage ("atmega32") {
       steps {
         catchError(buildResult: "FAILURE", stageResult: "FAILURE") {
-          sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega32 ..; make;"
+          sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega32 -DAVR_FR_OPT=${params.AVR_FR_OPT} ..; make;"
         }
       }
     }
     stage ("atmega32a") {
       steps {
         catchError(buildResult: "FAILURE", stageResult: "FAILURE") {
-          sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega32a ..; make;"
+          sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega32a -DAVR_FR_OPT=${params.AVR_FR_OPT} ..; make;"
         }
       }
     }
     stage ("atmega32u2") {
       steps {
         catchError(buildResult: "FAILURE", stageResult: "FAILURE") {
-          sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega32u2 ..; make;"
+          sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega32u2 -DAVR_FR_OPT=${params.AVR_FR_OPT} ..; make;"
         }
       }
     }
     stage ("atmega323") {
       steps {
         catchError(buildResult: "FAILURE", stageResult: "FAILURE") {
-          sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega323 ..; make;"
+          sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega323 -DAVR_FR_OPT=${params.AVR_FR_OPT} ..; make;"
         }
       }
     }
