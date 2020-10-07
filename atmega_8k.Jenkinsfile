@@ -11,7 +11,7 @@ pipeline {
   }
 
   parameters {
-    choice(name: "AVR_FR_OPT", choices: ["old", "new"], defaultValue: "old", description: "FreeRTOS AVR port")
+    choice(name: "AVR_FR_OPT", choices: ["old", "new"], description: "FreeRTOS AVR port")
   }
 
   stages {
