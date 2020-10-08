@@ -18,7 +18,6 @@ pipeline {
     pollSCM ("H/30 * * * *")
   }
 
-  def MCUS = ["atmega8", "atmega8a", "atmega8hva", "atmega8u2", "atmega8515", "atmega8535"]
   stages {
     stage ("env") {
       steps {
@@ -34,12 +33,45 @@ pipeline {
         ])
       }
     }
-    for (int i = 0; i < MCUS.length; i++) {
-      stage ("${MCUS[i]}") {
-        steps {
-          catchError(buildResult: "FAILURE", stageResult: "FAILURE") {
-            sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=${MCUS[i]} -DAVR_FR_OPT=${params.AVR_FR_OPT} ..; make;"
-          }
+    stage ("atmega8") {
+      steps {
+        catchError(buildResult: "FAILURE", stageResult: "FAILURE") {
+          sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega8 -DAVR_FR_OPT=${params.AVR_FR_OPT} ..; make;"
+        }
+      }
+    }
+    stage ("atmega8a") {
+      steps {
+        catchError(buildResult: "FAILURE", stageResult: "FAILURE") {
+          sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega8a -DAVR_FR_OPT=${params.AVR_FR_OPT} ..; make;"
+        }
+      }
+    }
+    stage ("atmega8hva") {
+      steps {
+        catchError(buildResult: "FAILURE", stageResult: "FAILURE") {
+          sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega8hva -DAVR_FR_OPT=${params.AVR_FR_OPT} ..; make;"
+        }
+      }
+    }
+    stage ("atmega8u2") {
+      steps {
+        catchError(buildResult: "FAILURE", stageResult: "FAILURE") {
+          sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega8u2 -DAVR_FR_OPT=${params.AVR_FR_OPT} ..; make;"
+        }
+      }
+    }
+    stage ("atmega8515") {
+      steps {
+        catchError(buildResult: "FAILURE", stageResult: "FAILURE") {
+          sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega8515 -DAVR_FR_OPT=${params.AVR_FR_OPT} ..; make;"
+        }
+      }
+    }
+    stage ("atmega8535") {
+      steps {
+        catchError(buildResult: "FAILURE", stageResult: "FAILURE") {
+          sh "mkdir -p build; cd build; rm -rvf *; cmake -DAVR_MCU=atmega8535 -DAVR_FR_OPT=${params.AVR_FR_OPT} ..; make;"
         }
       }
     }
