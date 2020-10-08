@@ -6,12 +6,16 @@ pipeline {
   //  BUILD_EMAIL_BODY = """build info: ${env.BUILD_URL}"""
   //}
 
-  triggers {
-    pollSCM ("H/30 * * * *")
-  }
-
   parameters {
     choice(name: "AVR_FR_OPT", choices: ["old", "new"], description: "FreeRTOS AVR port")
+  }
+
+  options {
+    buildDiscarder(logRotator(artifactDaysToKeepStr: "", artifactNumToKeepStr: "", daysToKeepStr: "", numToKeepStr: "8"))
+  }
+
+  triggers {
+    pollSCM ("H/30 * * * *")
   }
 
   stages {
@@ -60,9 +64,9 @@ pipeline {
   }
 
   post {
-    //always {
-    //  junit allowEmptyResults: true, testResults: "${PY_MODULE}/tests/data_out/test_py*.xml"
-    //}
+    always {
+      junit allowEmptyResults: true, testResults: "test.xml"
+    }
     //failure {
     //  emailext (
     //    subject: "FAILURE: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
