@@ -7,17 +7,14 @@ pipeline {
   //}
 
   options {
-    buildDiscarder(logRotator(artifactDaysToKeepStr: "", artifactNumToKeepStr: "", daysToKeepStr: "", numToKeepStr: "8"))
+    buildDiscarder(logRotator(artifactDaysToKeepStr: "", artifactNumToKeepStr: "", daysToKeepStr: "", numToKeepStr: "8")),
+    [pipelineTriggers([cron('16 H * * *')])],
+    //[pipelineTriggers([pollSCM('H/30 * * * *')])]
   }
 
   parameters {
     choice(name: "AVR_FR_OPT", choices: ["old", "new"], description: "FreeRTOS AVR port")
   }
-
-  properties(
-    [pipelineTriggers([cron('16 H * * *')])]
-    //[pipelineTriggers([pollSCM('H/30 * * * *')])]
-  )
 
   stages {
     stage ("env") {
