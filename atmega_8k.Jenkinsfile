@@ -7,9 +7,12 @@ pipeline {
   //}
 
   options {
+    [
     buildDiscarder(logRotator(artifactDaysToKeepStr: "", artifactNumToKeepStr: "", daysToKeepStr: "", numToKeepStr: "8")),
-    [pipelineTriggers([cron('16 H * * *')])],
-    //[pipelineTriggers([pollSCM('H/30 * * * *')])]
+    disableConcurrentBuilds(),
+    pipelineTriggers([cron('16 H * * *')]),
+    //pipelineTriggers([pollSCM('H/30 * * * *')])
+    ],
   }
 
   parameters {
