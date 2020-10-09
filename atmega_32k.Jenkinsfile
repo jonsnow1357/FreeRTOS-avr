@@ -12,7 +12,7 @@ pipeline {
     disableConcurrentBuilds(),
     pipelineTriggers([cron('16 H * * *')]),
     //pipelineTriggers([pollSCM('H/30 * * * *')])
-    ],
+    ]
   }
 
   parameters {
