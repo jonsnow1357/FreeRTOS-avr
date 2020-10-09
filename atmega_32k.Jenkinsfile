@@ -6,17 +6,18 @@ pipeline {
   //  BUILD_EMAIL_BODY = """build info: ${env.BUILD_URL}"""
   //}
 
-  parameters {
-    choice(name: "AVR_FR_OPT", choices: ["old", "new"], description: "FreeRTOS AVR port")
-  }
-
   options {
     buildDiscarder(logRotator(artifactDaysToKeepStr: "", artifactNumToKeepStr: "", daysToKeepStr: "", numToKeepStr: "8"))
   }
 
-  triggers {
-    pollSCM ("H/30 * * * *")
+  parameters {
+    choice(name: "AVR_FR_OPT", choices: ["old", "new"], description: "FreeRTOS AVR port")
   }
+
+  properties(
+    [pipelineTriggers([cron('16 H * * *')])]
+    //[pipelineTriggers([pollSCM('H/30 * * * *')])]
+  )
 
   stages {
     stage ("env") {
