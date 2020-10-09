@@ -9,12 +9,15 @@ pipeline {
   options {
     buildDiscarder(logRotator(artifactDaysToKeepStr: "", artifactNumToKeepStr: "", daysToKeepStr: "", numToKeepStr: "8"))
     disableConcurrentBuilds()
-    pipelineTriggers([cron('16 H * * *')])
-    //pipelineTriggers([pollSCM('H/30 * * * *')])
   }
 
   parameters {
     choice(name: "AVR_FR_OPT", choices: ["old", "new"], description: "FreeRTOS AVR port")
+  }
+
+  triggers {
+    cron("16 H * * *")
+    //pollSCM("H/30 * * * *")
   }
 
   stages {
